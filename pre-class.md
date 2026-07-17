@@ -7,6 +7,7 @@ Please complete these steps **before class**. It should take about 20–30 minut
 ### 1. Create Accounts (Free)
 
 - **GitHub account:** Sign up at [github.com](https://github.com) (choose the free plan)
+  - After signing up, **verify your email** (GitHub sends a confirmation link) and log in once normally in your browser. A brand-new, never-verified account may hit extra security checks (captchas, confirmation prompts) right when you're trying to push in class.
 - **Google account:** You likely already have one. If not, sign up at [accounts.google.com](https://accounts.google.com)
 
 ---

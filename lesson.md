@@ -143,7 +143,11 @@ Now the project is on your computer. You can edit it locally, then push changes 
 - [ ] **Signed into GitHub in VS Code** — click the account icon (bottom-left circle); it should show your GitHub username
 - [ ] **You can log in to github.com** in a browser
 
+> 🛟 **If your setup can't be fixed in a few minutes:** don't sit out — do the whole session on **github.com in the browser** instead. You can create repos, add/edit files, and commit entirely on the website (pencil icon → edit → Commit changes). You'll miss the VS Code steps but keep every Git concept. Fix your local setup after class using `pre-class.md` + the troubleshooting guide.
+
 > **Instructor note:** GitHub redesigns its UI often. Before class, click through the exercise once and confirm button names/locations below still match ("+ icon", "green Code button", "pencil icon", "Settings → Collaborators").
+>
+> **Instructor note — network failure plan:** this session is 100% dependent on Wi-Fi and GitHub being up, and classroom Wi-Fi with 30 people cloning at once *will* struggle. If the network dies: switch to concepts + the merge-conflict demo (steps 2–5 work fully offline in a local repo), and run the push/pull portions when it recovers.
 
 ---
 
@@ -175,8 +179,10 @@ Now the project is on your computer. You can edit it locally, then push changes 
 4. Press `Ctrl+Shift+P` (Windows) or `Cmd+Shift+P` (Mac) to open the Command Palette.
 5. Type **Git: Clone** and select it.
 6. Paste the URL you copied.
-7. Choose **one folder you'll remember** — e.g. make a `GitHub` folder inside Documents and always clone there. Write down where you put it.
+7. Choose **one folder you'll remember** — e.g. make a `GitHub` folder directly in your home folder (`C:\Users\you\GitHub` on Windows, `/Users/you/GitHub` on Mac) and always clone there. Write down where you put it.
+   - ⚠️ **Avoid Documents and Desktop** — on many machines those are synced by OneDrive (Windows) or iCloud (Mac), and cloud sync fighting over Git's hidden files causes locked files and corrupted repos that are very hard to diagnose.
 8. When prompted, click **Open Repository**.
+9. If VS Code asks **"Do you trust the authors of the files in this folder?"** — click **Yes, I trust the authors**. (Clicking "No" silently disables Git features and it's hard to notice why. If you clicked No by accident: `Ctrl+Shift+P` → **Workspaces: Manage Workspace Trust** → Trust.)
 
 ✅ Your repository is now on your computer and open in VS Code!
 
@@ -281,7 +287,7 @@ Sometimes the same line gets changed in two places before you can pull. Git can'
 
 *Goal: Practice collaborating with a partner on the same repository, without branches — just the Pull → Edit → Stage → Commit → Push loop you already know.*
 
-Pair up with one classmate. One of you is the **Repo Owner**, the other is the **Collaborator**.
+Pair up with one classmate. One of you is the **Repo Owner**, the other is the **Collaborator**. *(Odd number in class? Make one group of three — one Owner, two Collaborators.)*
 
 > **Instructor note:** pair a confident learner with a slower one — in a pair, one broken setup blocks *both* people. Also: collaborator invites arrive by email/notification and can lag a minute or two; send them at the very start of this exercise so acceptance isn't the bottleneck.
 
@@ -303,6 +309,8 @@ Pair up with one classmate. One of you is the **Repo Owner**, the other is the *
 4. Before your next push, always **Pull** first — practice the Golden Rule from Exercise B.
 
 ✅ Check GitHub together — you should both see each other's commits in the repo's history.
+
+> ⚔️ **Hit a merge conflict?** Congratulations — you've just recreated the exact scenario from Exercise B Part 4, live. This is a bonus, not an accident. Resolve it together: open the file, pick which version to keep (or combine both), delete the `<<<<<<<` / `=======` / `>>>>>>>` marker lines, then Save → Stage → Commit → Push. The written walkthrough is in `git_troubleshooting_decision_tree.md`.
 
 > 💡 Ready for more? `assignment.md` has an optional **Exercise C2** where you'll add branches and Pull Requests on top of this same workflow.
 
