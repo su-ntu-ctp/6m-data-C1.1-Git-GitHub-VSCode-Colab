@@ -55,7 +55,7 @@ If we covered the Colab section in class:
 
 ### 5. Optional: Exercise C2 — Branching & Pull Requests
 
-*Builds on Exercise C (Pair Collaboration) from class. Goal: practice the branch → PR → review → merge workflow real teams use.*
+*Builds on Exercise D (Branch & Pull Request) — this time with a partner, adding the **peer review** step. Goal: practice the branch → PR → review → merge workflow real teams use, where someone else reviews before merging.*
 
 Same partner, same repo from class (or a new one — your choice).
 

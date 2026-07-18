@@ -1,6 +1,6 @@
 # Version Control Made Simple: Git, GitHub & VS Code
 
-**Duration:** ~1 Hour 50 Minutes (110 minutes)
+**Duration:** ~2 Hours (125 minutes) — Module 3 (Colab) is optional and can be dropped to finish near 110 minutes
 
 **Format:** 30% Concepts / 70% Hands-on Practice
 
@@ -18,7 +18,8 @@ By the end of this session, you will be able to:
 2. Describe the difference between "local" (your computer) and "remote" (GitHub)
 3. Use the essential Git actions: Stage → Commit → Push → Pull
 4. Connect VS Code to GitHub and keep your work in sync
-5. *(Optional)* Explain what Google Colab is and how it connects to GitHub
+5. Work on a branch and merge it back via a Pull Request
+6. *(Optional)* Explain what Google Colab is and how it connects to GitHub
 
 ---
 
@@ -32,7 +33,8 @@ By the end of this session, you will be able to:
 | **0:33 – 0:55** | Exercise A: Your First Repository & Commit | Hands-on (22 min) |
 | **0:55 – 1:25** | Exercise B: Make Changes, Stay in Sync & Resolve a Conflict | Hands-on (30 min) |
 | **1:25 – 1:40** | Exercise C: Pair Collaboration | Hands-on (15 min) |
-| **1:40 – 1:50** | Module 3: What is Colab? + Self-Check + Wrap Up | Concepts (10 min) |
+| **1:40 – 1:55** | Exercise D: Branch & Pull Request | Hands-on (15 min) |
+| **1:55 – 2:05** | Module 3: What is Colab? + Self-Check + Wrap Up | Concepts (10 min, optional) |
 
 ---
 
@@ -161,10 +163,14 @@ Now your fork is on your computer. You can edit it locally, then push changes ba
 
 *Don't skip this. It catches broken setups now, instead of 40 minutes into the exercise. If any item is ❌, flag an instructor/TA before continuing — the rest of the class depends on these working.*
 
-- [ ] **Git installed** — VS Code terminal (`` Ctrl+` `` / `` Cmd+` ``), type `git --version`, see `git version 2.x.x`
-- [ ] **Name/email set** — type `git config --global --list`, see your `user.name` and `user.email`
-- [ ] **Signed into GitHub in VS Code** — click the account icon (bottom-left circle); it should show your GitHub username
-- [ ] **You can log in to github.com** in a browser
+> ✅ **You can do this whole check with VS Code clicks — no typing commands.** (A terminal alternative is listed under each item if you prefer it.)
+
+- [ ] **Git installed** — Open the **Source Control** panel (click the branch-like icon in the left sidebar, or `Ctrl+Shift+G`). If you see a blue **Download Git / Install Git** button, Git is missing — fix it using `pre-class.md`. If you see normal controls instead, Git is installed.
+  - *Terminal alternative:* open the terminal (`` Ctrl+` `` / `` Cmd+` ``), type `git --version`, see `git version 2.x.x`.
+- [ ] **Name/email set** — this is set **once** in pre-class and has no button in VS Code. Quickest confirmation: your first commit in Exercise A succeeds and shows **your name** as the author. If VS Code later pops *"Make sure you configure your user.name and user.email"*, it isn't set yet — see `pre-class.md` to set it (one copy-paste line).
+  - *Terminal alternative:* type `git config --global --list`, see your `user.name` and `user.email`.
+- [ ] **Signed into GitHub in VS Code** — click the account icon (bottom-left circle); it should show your GitHub username.
+- [ ] **You can log in to github.com** in a browser.
 
 > 🛟 **If your setup can't be fixed in a few minutes:** don't sit out — do the whole session on **github.com in the browser** instead. You can create repos, add/edit files, and commit entirely on the website (pencil icon → edit → Commit changes). You'll miss the VS Code steps but keep every Git concept. Fix your local setup after class using `pre-class.md` + the troubleshooting guide.
 
@@ -232,7 +238,7 @@ Now your fork is on your computer. You can edit it locally, then push changes ba
 
 ✅ Go to your GitHub repository and refresh the page — you should see `notes.txt` there!
 
-> 🏃 **Finished early?** Add a second file (e.g. `about-me.txt`), then stage, commit, and push it too. In the VS Code terminal, try `git log --oneline` to see your commit history.
+> 🏃 **Finished early?** Add a second file (e.g. `about-me.txt`), then stage, commit, and push it too. To see your commit history **without the command line**, open the **Explorer** (`Ctrl+Shift+E`), click your file, and open the **Timeline** view at the bottom — every commit that touched it is listed. *(Prefer the terminal? Try `git log --oneline`.)*
 
 ---
 
@@ -327,7 +333,58 @@ Pair up with one classmate. One of you is the **Repo Owner**, the other is the *
 
 > ⚔️ **Hit a merge conflict?** Congratulations — you've just recreated the exact scenario from Exercise B Part 4, live. This is a bonus, not an accident. Resolve it together: open the file, pick which version to keep (or combine both), delete the `<<<<<<<` / `=======` / `>>>>>>>` marker lines, then Save → Stage → Commit → Push. The written walkthrough is in `git_troubleshooting_decision_tree.md`.
 
-> 💡 Ready for more? `assignment.md` has an optional **Exercise C2** where you'll add branches and Pull Requests on top of this same workflow.
+---
+
+## 🌿 Exercise D: Work on a Branch & Open a Pull Request (15 mins)
+
+*Goal: Make changes safely on a **branch**, then merge them back into `main` through a **Pull Request** — the exact workflow real teams use every day.*
+
+So far you've committed straight to `main`. On real projects that's risky — you don't want half-finished work on the "official" version. Instead you make a **branch** (a safe side-copy), do your work there, then open a **Pull Request (PR)** to **merge** it back into `main`.
+
+```
+main ──●──●──────────────●──  ← your stable, shared version
+        \                /
+ branch  ●──●──●────────    ← you work here, then merge back via a PR
+```
+
+Use your own `my-learning-journal` repo from Exercise A.
+
+### Step 1 — Create a Branch (in VS Code)
+
+1. Look at the **bottom-left status bar** in VS Code — it shows your current branch (`main`).
+2. Click that branch name. A menu opens at the top.
+3. Choose **+ Create new branch**, name it `add-goals`, press Enter.
+4. The status bar now shows `add-goals` — you're working on the branch, not `main`.
+
+### Step 2 — Make a Change, Commit, Publish the Branch
+
+1. Open `notes.txt` (or create `goals.txt`) and add a line, e.g. `My goal: get comfortable with branches.`
+2. Save, go to **Source Control**, **Stage** (**+**), **Commit** with a message like `Add my goals`.
+3. Click **Publish Branch** (VS Code shows this instead of Sync the first time on a new branch). This pushes `add-goals` to GitHub.
+
+✅ On GitHub, refresh — switch the branch dropdown to `add-goals` and you'll see your change there, but **not** on `main` yet.
+
+### Step 3 — Open a Pull Request (on GitHub)
+
+1. Go to your repo on GitHub. A yellow banner **"add-goals had recent pushes — Compare & pull request"** usually appears — click it. (No banner? Click the **Pull requests** tab → **New pull request** → base `main`, compare `add-goals`.)
+2. Check that **base** is `main` and **compare** is `add-goals`.
+3. Add a title/description, click **Create pull request**.
+
+> 💡 **This is where teammates would review your work** and leave comments before it's accepted — the whole point of a PR.
+
+### Step 4 — Merge the Pull Request
+
+1. On the PR page, click **Merge pull request** → **Confirm merge**.
+2. Your `add-goals` changes are now part of `main`. (Optional: click **Delete branch** — the branch has done its job.)
+
+### Step 5 — Bring the Merge Back to Your Computer
+
+1. Return to VS Code, click the branch name in the status bar → switch back to **main**.
+2. **Pull** (Sync Changes) — your local `main` now has the merged change.
+
+✅ You just ran the real-world loop: **branch → commit → push → Pull Request → merge → pull**.
+
+> ⏭️ **Short on time?** Steps 1–4 are the core. Step 5 can be done after class.
 
 ---
 
@@ -377,6 +434,7 @@ Before you leave, make sure you can answer YES to all of these:
 - [ ] I can create a repo on GitHub, clone it, and open it in VS Code
 - [ ] I can stage a change, write a commit message, and push to GitHub
 - [ ] I can pull the latest changes from GitHub to my computer
+- [ ] I can create a branch, open a Pull Request, and merge it into `main`
 - [ ] I know what a merge conflict looks like and roughly how to resolve one
 
 ---
